@@ -1,0 +1,13 @@
+.text {
+  color: green;
+}
+body {
+  margin-left: 200px;
+}
+
+
+.box{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}

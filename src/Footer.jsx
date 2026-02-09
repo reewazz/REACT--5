@@ -1,6 +1,7 @@
 import RandomText from "../RandomText"
 
-function Footer(){
+function Footer({props}){
+    console.log(abc,"props")
     return(
         <>
         This is footer

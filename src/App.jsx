@@ -3,10 +3,13 @@ import './App.css'
 import Footer from './Footer'
 import Navbar from './Navbar'
 import TodoList from './Todolist'
+import { Hello } from './Hello'
+// import Hello from './Hello'
+// import { Hello } from './Hello'
 function App (){
     // let count = 0
 
-    const [count,setCount] = useState(1000) //number
+    const [count,setCount] = useState(0) //number
     const [color,setColor] = useState("gray") //string
     const [user,setUser] = useState({
         name: 'riwaj',
@@ -23,8 +26,11 @@ function App (){
 
     return (
         <>
+        <Hello name= "riwaj" count = {count} setCount = {setCount} />
+        <button onClick={()=>setCount(count+1)}>+</button>
+        {/* <Footer/> */}
 
-<TodoList/>
+{/* <TodoList/> */}
 {/* <div className='box' style={{backgroundColor : `${color}`,}}>
 
 </div>

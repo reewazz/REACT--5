@@ -3,7 +3,22 @@ import { useState } from "react"
 function TodoList(){
 
     const [task,setTask] = useState("")
-    const [todoList,setTodoList] = useState(['task 1', "task 2"])
+  
+
+   
+
+
+    
+    const [todoList,setTodoList] = useState([{
+        id:1,
+        task: "task 1",
+        completed : false
+    },
+{
+        id:2,
+        task: "task 2",
+        completed : true
+    }])
   
     const addTodo = ()=> {
         if (task.trim()===""){
@@ -11,13 +26,13 @@ function TodoList(){
             return;
         }
 
-//         const newTodo = {
-//             id: 3,
-//             task: task,
-//             completed:false
-//         }
-// setTodoList([...todoList,newTodo])
-setTodoList([...todoList,task])
+        const newTodo = {
+            id: Date.now(),
+            task: task,
+            completed:false
+        }
+setTodoList([...todoList,newTodo])
+// setTodoList([...todoList,task])
 setTask("")
     }
 
@@ -27,6 +42,19 @@ setTask("")
    setTodoList(updatedTodo)
    
     }
+
+
+    const toggleDone = (completedId)=> {
+   const updatedTodo = todoList.map((item,index)=>(
+    item.id === completedId  ? {...item,completed:!item.completed} : item
+   ))
+
+
+   setTodoList(updatedTodo)
+
+    }
+
+    console.log(todoList)
     return (
         <>
 
@@ -39,8 +67,9 @@ setTask("")
 
     
      <div key={index} style={{display:"flex",gap:"32px"}}>
-           <li  > {item} </li>
+           <li  style={{textDecoration: item.completed ? "line-through" :  "none"   }} > {item.task} </li>
            <button onClick={()=>deleteTodo(index)}>X</button>
+           <button onClick={()=>toggleDone(item.id)}>done</button>
      </div>
        
         

@@ -4,6 +4,9 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import TodoList from './Todolist'
 import { Hello } from './Hello'
+import { ProductLists } from './ProductLists'
+import { Route, Routes } from 'react-router-dom'
+import { DetailPage } from './DetailPage'
 // import Hello from './Hello'
 // import { Hello } from './Hello'
 function App (){
@@ -26,18 +29,25 @@ function App (){
 
     return (
         <>
-        <Hello name= "riwaj" count = {count} setCount = {setCount} />
-        <button onClick={()=>setCount(count+1)}>+</button>
-        {/* <Footer/> */}
+        <Navbar/>
+   
+<Routes>
+<Route path='/' element = {<h1>Homepage</h1>} />
+<Route path='products' element = {<ProductLists/>} />
+<Route path='products/:id' element = {<DetailPage/>} />
+<Route path='todolist' element = {<TodoList/>} />
+<Route path = "/*" element = {<h1>Page not found</h1>} />
 
-{/* <TodoList/> */}
-{/* <div className='box' style={{backgroundColor : `${color}`,}}>
+</Routes>
 
-</div>
-    
-    <button onClick={()=>setColor('redede')}>red</button>
-    <button onClick={()=>setColor("yellow")}>yellow</button>
-    <button onClick={()=>setColor('black')}>green</button> */}
+<h1>footer</h1>
+
+
+
+
+
+
+
          
       
 

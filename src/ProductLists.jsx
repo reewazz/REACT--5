@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
 import { products } from "./components/common/Products";
 
@@ -33,6 +33,10 @@ const fetchJson = async()=> {
   console.log(error)
  }
 }
+
+useEffect(()=>{
+fetchJson()
+},[])
 
 
   //  const fetchJson =  async() => {

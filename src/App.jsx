@@ -8,6 +8,7 @@ import { ProductLists } from './ProductLists'
 import { Route, Routes } from 'react-router-dom'
 import { DetailPage } from './DetailPage'
 import { UserLists } from './modules/users/UserLists'
+import { BlogPage } from './pages/BlogPage'
 // import Hello from './Hello'
 // import { Hello } from './Hello'
 function App (){
@@ -38,6 +39,7 @@ function App (){
 <Route path='users' element = {<UserLists/>} />
 <Route path='products/:id' element = {<DetailPage/>} />
 <Route path='todolist' element = {<TodoList/>} />
+<Route path='blog' element = {<BlogPage/>} />
 <Route path = "/*" element = {<h1>Page not found</h1>} />
 
 </Routes>

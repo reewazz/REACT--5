@@ -17,15 +17,24 @@ const handleFocus = ()=> {
             const response = await fetch(`https://newsapi.org/v2/everything?q=${query}&from=2026-02-16&to=2026-02-16&sortBy=popularity&apiKey=68bdb3d4642e467db3702c03e1a1a53b`)
     //   https://newsapi.org/v2/top-headlines?country=us&category=politics&apiKey=68bdb3d4642e467db3702c03e1a1a53b
         const finalResult = await response.json()
+      
       setUsers(finalResult.articles)
         }
         catch(error){
             console.log(error)
         }
+
     }
 
-   
 
+    const givealert=()=> {
+        alert ("alert from useeffect")
+    }
+   
+useEffect(()=> {
+fetchUsers()
+givealert()
+},[count])
     console.log(users)
 
     return (
@@ -39,12 +48,18 @@ const handleFocus = ()=> {
         {users?.map((it
         
         
-        burem,index)=> (
+        item,index)=> (
 <div key={index}>
 <h3>{item?.name}</h3>
 </div>
         ))} */}
-        <button onClick={fetchUsers}>fetchh news</button>
+        <div className="p-10">
+      <button onClick={()=>setCount(count+1)}>+</button>
+      {count}
+</div>
+        <button >fetchh news</button>
+      
+
 
         <input type="text" className="border-red-400 outline-2"  value={query} onChange={(e)=>setQuery(e.target.value)} />
         <div className="grid grid-cols-3 gap-4">
@@ -55,6 +70,7 @@ const handleFocus = ()=> {
     </div>
 ))}
         </div>
+
 
         
 

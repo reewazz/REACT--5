@@ -15,6 +15,7 @@ function Navbar(){
     <Link to = "/">Home</Link>
     <Link to = "products">Products</Link>
     <Link to = "todolist">TodoList</Link>
+    <Link to = "blog">Blog</Link>
 </div>
 <div className="flex gap-4">
    <Link to = "/login">  <button>login</button></Link>

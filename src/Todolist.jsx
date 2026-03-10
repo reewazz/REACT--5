@@ -1,8 +1,11 @@
 import { useState } from "react"
+import Button from "./components/common/Button"
 
 function TodoList(){
 
     const [task,setTask] = useState("")
+    // const [editMode,setEditMode] = useState(false)
+    const [editId,setEditId] = useState(null) 
   
 
    
@@ -25,13 +28,25 @@ function TodoList(){
             alert("please enter a valid task")
             return;
         }
+        if(editId!==null){
+  const updatedTodo = todoList.map((item,index)=>(
+    item.id === editId  ? {...item,} : item
+   ))
 
-        const newTodo = {
+
+   setTodoList(updatedTodo)
+        }
+        else{
+ const newTodo = {
             id: Date.now(),
             task: task,
             completed:false
         }
 setTodoList([...todoList,newTodo])
+
+        }
+
+       
 // setTodoList([...todoList,task])
 setTask("")
     }
@@ -44,6 +59,14 @@ setTask("")
     }
 
 
+    const editTodo = (itemToEdit)=> {
+        setTask(itemToEdit.task)
+        
+        // setEditMode(true)
+        setEditId(itemToEdit.id)
+       
+    }  
+
     const toggleDone = (completedId)=> {
    const updatedTodo = todoList.map((item,index)=>(
     item.id === completedId  ? {...item,completed:!item.completed} : item
@@ -55,12 +78,15 @@ setTask("")
     }
 
     console.log(todoList)
+    
     return (
         <>
+{/* <Button value={"Add"}/>
+<Button value={"Edit"}/> */}
 
         <input type="text" value={task}  onChange={(e)=>setTask(e.target.value)} />
 
-        <button onClick={addTodo}>Add todo</button>
+        <button onClick={addTodo}>{editId ? "Update" : "Add"} todo</button>
 
 {
     todoList.map((item,index)=> (
@@ -69,6 +95,7 @@ setTask("")
      <div key={index} style={{display:"flex",gap:"32px"}}>
            <li  style={{textDecoration: item.completed ? "line-through" :  "none"   }} > {item.task} </li>
            <button onClick={()=>deleteTodo(index)}>X</button>
+           <button onClick={()=>editTodo(item)}>edit</button>
            <button onClick={()=>toggleDone(item.id)}>done</button>
      </div>
        

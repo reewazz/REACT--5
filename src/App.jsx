@@ -8,7 +8,9 @@ import { ProductLists } from './ProductLists'
 import { Route, Routes } from 'react-router-dom'
 import { DetailPage } from './DetailPage'
 import { UserLists } from './modules/users/UserLists'
-import { BlogPage } from './pages/BlogPage'
+import BlogPage from './pages/BlogPage'
+import Home from './pages/Home'
+// import { BlogPage } from './pages/BlogPage'
 // import Hello from './Hello'
 // import { Hello } from './Hello'
 function App (){
@@ -34,7 +36,7 @@ function App (){
         <Navbar/>
    
 <Routes>
-<Route path='/' element = {<h1>Homepage</h1>} />
+<Route path='/' element = {<Home/>} />
 <Route path='products' element = {<ProductLists/>} />
 <Route path='users' element = {<UserLists/>} />
 <Route path='products/:id' element = {<DetailPage/>} />

@@ -19,7 +19,7 @@ function Navbar(){
 </div>
 <div className="flex gap-4">
    <Link to = "/login">  <button>login</button></Link>
-    <button>signup</button>
+   <Link to = '/signup'><button>signup</button></Link> 
 </div>
   </div>
         </>

@@ -10,8 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mantine/carousel": "^8.3.16",
+    "@mantine/core": "^8.3.16",
+    "@mantine/form": "^8.3.16",
+    "@mantine/hooks": "^8.3.16",
     "@tailwindcss/vite": "^4.1.18",
+    "aos": "^2.3.4",
     "axios": "^1.13.6",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0",
@@ -26,6 +33,9 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "postcss": "^8.5.8",
+    "postcss-preset-mantine": "^1.18.0",
+    "postcss-simple-vars": "^7.0.1",
     "vite": "^7.2.4"
   }
 }

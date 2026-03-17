@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Footer from './Footer'
 import Navbar from './Navbar'
@@ -10,6 +10,10 @@ import { DetailPage } from './DetailPage'
 import { UserLists } from './modules/users/UserLists'
 import BlogPage from './pages/BlogPage'
 import Home from './pages/Home'
+import SignupForm from '../Signup'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import LoginForm from '../Login'
 // import { BlogPage } from './pages/BlogPage'
 // import Hello from './Hello'
 // import { Hello } from './Hello'
@@ -22,6 +26,11 @@ function App (){
         name: 'riwaj',
         age: 18
     })  //object
+
+
+ useEffect(()=>{
+     AOS.init();
+ },[])
 
 
     const [numbers,setNumbers] = useState([1,2,4,45,5]) //array
@@ -42,6 +51,8 @@ function App (){
 <Route path='products/:id' element = {<DetailPage/>} />
 <Route path='todolist' element = {<TodoList/>} />
 <Route path='blog' element = {<BlogPage/>} />
+<Route path='signup' element = {<SignupForm/>} />
+<Route path='login' element = {<LoginForm/>} />
 <Route path = "/*" element = {<h1>Page not found</h1>} />
 
 </Routes>

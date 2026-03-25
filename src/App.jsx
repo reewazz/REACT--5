@@ -14,6 +14,8 @@ import SignupForm from '../Signup'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import LoginForm from '../Login'
+import Dashboard from './pages/dashboard/Dashboard'
+import PrivateRoutes from './helpers/PrivateRoutes'
 // import { BlogPage } from './pages/BlogPage'
 // import Hello from './Hello'
 // import { Hello } from './Hello'
@@ -45,14 +47,17 @@ function App (){
         <Navbar/>
    
 <Routes>
-<Route path='/' element = {<Home/>} />
+<Route path='/' element = { <Home> 
+  <Footer/> 
+  </Home>} />
 <Route path='products' element = {<ProductLists/>} />
 <Route path='users' element = {<UserLists/>} />
 <Route path='products/:id' element = {<DetailPage/>} />
 <Route path='todolist' element = {<TodoList/>} />
-<Route path='blog' element = {<BlogPage/>} />
+<Route path='blog' element = {<PrivateRoutes><BlogPage/></PrivateRoutes>} />
 <Route path='signup' element = {<SignupForm/>} />
 <Route path='login' element = {<LoginForm/>} />
+<Route path='dashboard' element = { <PrivateRoutes><Dashboard/></PrivateRoutes>  } />
 <Route path = "/*" element = {<h1>Page not found</h1>} />
 
 </Routes>

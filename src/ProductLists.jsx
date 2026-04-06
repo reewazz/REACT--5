@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
 import { products } from "./components/common/Products";
+import { CounterContext } from "./helpers/CounterContext";
 
 export const ProductLists = () => {
   //  const fetchJson  = async ()=> {
   //   const res  = await fetch('./components/common/ProductJson.json')
   //   console.log(res.json())
   //  }
+    // const [count,setCount] = useState(20) //number
+
+    const {count,setCount} = useContext(CounterContext)
 
   const [jsonArray, setJsonArray] = useState([]);
   const [page, setPage] = useState(0);
@@ -61,6 +65,8 @@ fetchJson()
       : products.filter((item, index) => item.category === selectedCategory);
   return (
     <>
+    <h2 className="text-3xl text-green-400 text-center">{count}</h2>
+    <button onClick={()=>setCount(count+1)} className="bg-red-400 p-4 rounded-2xl">plus</button>
       <button onClick={fetchJson}>fetch values</button>
       <div className="flex gap-8 items-center mb-4">
         <button
@@ -87,10 +93,11 @@ fetchJson()
         >
           Electronics
         </button>
+        <button onClick={()=>setCount(count+1)}>plus</button>
       </div>
       <div className=" grid grid-cols-3  gap-8">
         {jsonArray.map((item, index) => (
-          <ProductCard item={item} />
+          <ProductCard count={count} item={item} />
         ))}
       </div>
     </>

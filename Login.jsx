@@ -1,8 +1,11 @@
 import { TextInput, PasswordInput, Button, Paper, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "./src/helpers/AuthContext";
 
 export default function LoginForm() {
+  const {setUser} = useContext(AuthContext)
   const form = useForm({
     initialValues :{
   
@@ -40,6 +43,8 @@ console.log(form.values)
     const response = await axios.post("http://localhost:5000/auth/login",payload)
     console.log(response)
     localStorage.setItem("token",response.data.token)
+    localStorage.setItem("user",JSON.stringify(response.data.user))
+    setUser(response.data.user)
     alert("User Logged in  successfully")
     form.reset()
     }

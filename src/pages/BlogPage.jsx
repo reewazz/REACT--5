@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import Button from "../components/common/Button";
 import axios from "axios";
 import { useForm } from "@mantine/form";
-import { Text, TextInput } from "@mantine/core";
+import { Button, Loader, Text, TextInput } from "@mantine/core";
 
 const BlogPage = () => {
 
   const [categories,setCategories] = useState([])
   const [file,setFile] = useState(null)
+  const [loading,setLoading] = useState(false)
 
 const fetchCategories = async ()=> {
   const res = await axios.get("http://localhost:5000/category/getAll")
@@ -56,8 +56,10 @@ useEffect(()=> {
  
 
 
-  console.log(form.errors,"checking errors")
-  const handleSubmit =  ()=> {
+  // console.log(form.errors,"checking errors")
+  const handleSubmit =  async()=> {
+   try{
+     setLoading(true)
    
 const myForm = new FormData()
 myForm.append('title',formData.title)
@@ -67,13 +69,21 @@ myForm.append('category',formData.category)
 myForm.append('blogImage',file)
 setFile(null)
 
-    const response = axios.post ("http://localhost:5000/blog/create",myForm)
+    const response = await axios.post ("http://localhost:5000/blog/create",myForm)
     console.log(response)
+ 
+   }
+   catch(err){
+console.error(err)
+   }
+   finally{
+    setLoading(false)
+   }
     // form.reset()
 
   }
   
-  console.log(formData,"running or not")
+  console.log(loading,"running or not")
 
   return (
     <div className="flex items-center flex-col">
@@ -112,9 +122,9 @@ setFile(null)
 
     </select>
 
+  {loading && <Loader/>}
 
-
-     <Button onClick={handleSubmit} value={"submit"}/>
+     <Button loading={loading} onClick={handleSubmit}>Submit </Button>
     </div>
   );
 };

@@ -19,9 +19,10 @@ function Footer({props}){
   
     return(
         <div className="flex flex-col items-center gap-4">
-   <h1 className="text-center ">Upload files here</h1>
+   {/* <h1 className="text-center ">Upload files here</h1>
    <input  className="border-2 border-gray-200" type="file" onChange={(e)=>setFile(e.target.files[0])} />
-   <Button onClick={handleSubmit}>submit</Button>
+   <Button onClick={handleSubmit}>submit</Button> */}
+   this is footer
         </div>
     )
 }

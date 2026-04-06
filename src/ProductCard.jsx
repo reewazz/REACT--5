@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export const ProductCard = ({item})=> {
+export const ProductCard = ({item,count})=> {
     return(
         <>
         <Link to = {`${item._id}`}>
@@ -8,7 +8,8 @@ export const ProductCard = ({item})=> {
             <img src={item.image} alt="" />
                 <h2 className="text-2xl font-bold" > {item.title} </h2>
                 <p>{item.description}</p>
-                <h4> ${item.price} </h4>
+                <h4> ${item.price} </h4>,
+                <h3>The count is {count}</h3>
 
 
 

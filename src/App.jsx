@@ -16,13 +16,15 @@ import 'aos/dist/aos.css';
 import LoginForm from '../Login'
 import Dashboard from './pages/dashboard/Dashboard'
 import PrivateRoutes from './helpers/PrivateRoutes'
+import AppLayout from './components/common/layouts/AppLayout'
+import AdminLayout from './components/common/layouts/AdminLayout'
+import AddCategory from './pages/dashboard/AddCategory'
 // import { BlogPage } from './pages/BlogPage'
 // import Hello from './Hello'
 // import { Hello } from './Hello'
 function App (){
     // let count = 0
 
-    const [count,setCount] = useState(0) //number
     const [color,setColor] = useState("gray") //string
     const [user,setUser] = useState({
         name: 'riwaj',
@@ -40,29 +42,44 @@ function App (){
     const [show,setShow] = useState(false) //bolean
     const [showName,setShowName] = useState(false) //bolean
 
+
   
 
     return (
         <>
-        <Navbar/>
+        {/* <button onClick={()=>setCount(count+1)}>+</button> */}
+       
    
 <Routes>
-<Route path='/' element = { <Home> 
-  <Footer/> 
-  </Home>} />
-<Route path='products' element = {<ProductLists/>} />
+{/* <Route path = "/" element = {<AppLayout><Home/></AppLayout>}/> */}
+<Route path = "/" element = {<AppLayout/>}>
+
+
+<Route index element = {<Home />} />
+<Route path='products' element = {<ProductLists />} />
+
+<Route path='products' element = {<ProductLists />} />
 <Route path='users' element = {<UserLists/>} />
 <Route path='products/:id' element = {<DetailPage/>} />
 <Route path='todolist' element = {<TodoList/>} />
-<Route path='blog' element = {<PrivateRoutes><BlogPage/></PrivateRoutes>} />
+<Route path='blog' element = {<BlogPage/>} />
 <Route path='signup' element = {<SignupForm/>} />
 <Route path='login' element = {<LoginForm/>} />
-<Route path='dashboard' element = { <PrivateRoutes><Dashboard/></PrivateRoutes>  } />
+</Route>
+
+
+
+
+<Route path='dashboard' element = { <AdminLayout/>  } >
+<Route index element = {<Dashboard />} />
+<Route path='category' element = {<AddCategory />} />
+
+</Route>
 <Route path = "/*" element = {<h1>Page not found</h1>} />
 
 </Routes>
 
-<h1>footer</h1>
+
 
 
 

@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom"
 import RandomText from "../RandomText"
+import { useContext } from "react"
+import { AuthContext } from "./helpers/AuthContext"
 
 // import RandomText from "../RandomText"
 function Navbar(){
+
+    const {user} = useContext(AuthContext)
+
+    console.log(user,"user")
     return (
         <>
    
@@ -17,10 +23,16 @@ function Navbar(){
     <Link to = "todolist">TodoList</Link>
     <Link to = "blog">Blog</Link>
 </div>
-<div className="flex gap-4">
+
+{!user ? (<div className="flex gap-4">
    <Link to = "/login">  <button>login</button></Link>
    <Link to = '/signup'><button>signup</button></Link> 
-</div>
+</div>): (
+    <div>
+        {user.fullName}
+        </div>
+)}
+
   </div>
         </>
     )
